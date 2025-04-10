@@ -14,15 +14,15 @@ phases:
       - echo Listing files in the root directory
       - ls -al
       - echo Listing files in the build directory
-      - ls -al dist/
+      - ls -al build/
   post_build:
     commands:
-      - echo Verifying dist/ directory...
-      - ls -al dist/   # Check if dist/ exists
+      - echo Verifying build/ directory...
+      - ls -al build/   # Check if build/ exists
       - echo Deploying to S3....
       - aws s3 sync dist/ s3://static-site-cicd/ --delete
 
 artifacts:
   files:
     - '**/*'
-  base-directory: dist
+  base-directory: build
