@@ -11,7 +11,10 @@ phases:
     commands:
       - echo Building app....
       - npm run build
+      - echo Listing files in the root directory
       - ls -al
+      - echo Listing files in the build directory
+      - ls -al dist/
   post_build:
     commands:
       - echo Verifying dist/ directory...
