@@ -11,8 +11,11 @@ phases:
     commands:
       - echo Building app....
       - npm run build
+      - ls -al
   post_build:
     commands:
+      - echo Verifying dist/ directory...
+      - ls -al dist/   # Check if dist/ exists
       - echo Deploying to S3....
       - aws s3 sync dist/ s3://static-site-cicd/ --delete
 
